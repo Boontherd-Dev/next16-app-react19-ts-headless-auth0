@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
 import { lineSeedSans } from '@/fonts/LineSeedSans';
+import Auth0ProviderWithRedirectCallback from '@/lib/auth0-provider';
 import StyledComponentsRegistry from '@/lib/registry';
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${lineSeedSans.className} antialiased`}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <Auth0ProviderWithRedirectCallback>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </Auth0ProviderWithRedirectCallback>
       </body>
     </html>
   );

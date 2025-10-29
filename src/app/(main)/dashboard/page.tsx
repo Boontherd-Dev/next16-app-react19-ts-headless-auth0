@@ -1,6 +1,8 @@
-import { CheckCircle2, LayoutDashboard, Lock, User } from 'lucide-react';
-import { cookies } from 'next/headers';
+'use client';
 
+import { CheckCircle2, LayoutDashboard, Lock, User } from 'lucide-react';
+
+import { LogoutButton } from '@/components/logout-button';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,13 +12,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { LogoutButton } from '@/components/logout-button';
 
-export default async function DashboardPage() {
-  // Get the access token from cookies (server component)
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get('access_token');
-
+export default function DashboardPage() {
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-8'>
       <div className='max-w-6xl mx-auto space-y-8'>
@@ -92,9 +89,6 @@ export default async function DashboardPage() {
                 </div>
                 <div className='flex items-center justify-between text-sm'>
                   <span className='text-muted-foreground'>Token:</span>
-                  <span className='font-mono text-xs'>
-                    {accessToken?.value ? 'Valid' : 'Not Found'}
-                  </span>
                 </div>
               </div>
             </CardContent>

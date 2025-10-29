@@ -80,7 +80,7 @@ export function proxy(request: NextRequest) {
     '/login',
     '/register',
     '/access-denied',
-    '/', // Home page
+    '/redirect', // Auth0 redirect callback
   ];
 
   // Check if the current path is a public route
