@@ -5,11 +5,7 @@ import { ReactNode } from 'react';
 
 import { auth0Config } from './auth0';
 
-export default function Auth0ProviderWithRedirectCallback({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function Auth0Wrapper({ children }: { children: ReactNode }) {
   const authorizationParams: any = {
     redirect_uri: auth0Config.redirectUri,
     scope: 'openid profile email',
