@@ -22,7 +22,7 @@ export default function Auth0Wrapper({ children }: { children: ReactNode }) {
       domain={auth0Config.domain}
       clientId={auth0Config.clientId}
       authorizationParams={authorizationParams}
-      useRefreshTokens
+      // useRefreshTokens
       // cacheLocation='localstorage'
     >
       {children}

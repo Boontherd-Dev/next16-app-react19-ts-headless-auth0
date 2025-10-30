@@ -2,7 +2,6 @@
 
 import { useAuth0 } from '@auth0/auth0-react';
 import { LogIn, Loader2 } from 'lucide-react';
-import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -15,14 +14,6 @@ import {
 
 export default function LoginPage() {
   const { loginWithRedirect, isLoading } = useAuth0();
-
-  const handleLogin = () => {
-    // const state = {
-    //   app_key: 'auth-system',
-    // };
-    // const encodedState = btoa(JSON.stringify(state));
-    loginWithRedirect();
-  };
 
   return (
     <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4'>
@@ -38,7 +29,7 @@ export default function LoginPage() {
         </CardHeader>
         <CardFooter className='flex flex-col gap-2'>
           <Button
-            onClick={() => handleLogin()}
+            onClick={() => loginWithRedirect()}
             disabled={isLoading}
             className='w-full'
           >
@@ -54,14 +45,6 @@ export default function LoginPage() {
               </>
             )}
           </Button>
-          <div className='text-center text-sm text-muted-foreground mt-4'>
-            <Link
-              href='/'
-              className='hover:text-primary underline-offset-4 hover:underline'
-            >
-              Return to Home
-            </Link>
-          </div>
         </CardFooter>
       </Card>
     </div>

@@ -34,18 +34,6 @@ export default function Redirect() {
           return;
         }
 
-        // Get the raw token from Auth0
-        const idToken = await getIdTokenClaims();
-
-        if (!idToken || !idToken.__raw) {
-          console.error('Failed to get token claims');
-          setError('Failed to retrieve authentication token.');
-          setTimeout(() => {
-            router.push('/login');
-          }, 2000);
-          return;
-        }
-
         const accessToken = await getAccessTokenSilently();
 
         // Set the raw token to cookie

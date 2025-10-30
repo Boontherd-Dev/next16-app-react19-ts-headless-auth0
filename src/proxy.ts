@@ -79,7 +79,6 @@ export function proxy(request: NextRequest) {
   const publicRoutes = [
     '/login',
     '/register',
-    '/access-denied',
     '/redirect', // Auth0 redirect callback
   ];
 
@@ -95,7 +94,7 @@ export function proxy(request: NextRequest) {
     if (!isValidToken) {
       // Redirect to access-denied page if token is invalid or missing
       const url = request.nextUrl.clone();
-      url.pathname = '/access-denied';
+      url.pathname = '/login';
 
       // Optionally, add the original URL as a query parameter for redirect after login
       url.searchParams.set('redirect', pathname);
