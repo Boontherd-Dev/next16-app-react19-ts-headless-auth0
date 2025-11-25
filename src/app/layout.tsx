@@ -2,6 +2,7 @@ import './globals.css';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
+import { ConfigProvider } from '@/contexts/config-context';
 import { lineSeedSans } from '@/fonts/LineSeedSans';
 import Auth0Wrapper from '@/lib/auth0-wrapper';
 import StyledComponentsRegistry from '@/lib/registry';
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${lineSeedSans.className} antialiased`}>
-        <Auth0Wrapper>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </Auth0Wrapper>
+        <ConfigProvider>
+          <Auth0Wrapper>
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </Auth0Wrapper>
+        </ConfigProvider>
       </body>
     </html>
   );

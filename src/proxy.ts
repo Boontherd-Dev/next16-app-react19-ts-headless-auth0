@@ -79,6 +79,7 @@ export function proxy(request: NextRequest) {
   const publicRoutes = [
     '/login',
     '/register',
+    '/health',
     '/redirect', // Auth0 redirect callback
   ];
 

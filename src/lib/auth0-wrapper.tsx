@@ -3,24 +3,26 @@
 import { Auth0Provider } from '@auth0/auth0-react';
 import { ReactNode } from 'react';
 
-import { auth0Config } from './auth0';
+import { useConfig } from '@/contexts/config-context';
 
 export default function Auth0Wrapper({ children }: { children: ReactNode }) {
+  const config = useConfig();
+
   const authorizationParams: any = {
-    redirect_uri: auth0Config.redirectUri,
+    redirect_uri: config?.auth0.auth0RedirectUri || '',
     scope: 'openid profile email',
     app_key: 'auth-system', // Custom parameter that will be available in Auth0 Action
-    audience: 'https://api.myapp.local',
+    audience: config?.auth0.auth0Audience || '',
   };
   // Add organization parameter if it's configured
-  if (auth0Config.organization) {
-    authorizationParams.organization = auth0Config.organization;
-  }
+  // if (config?.auth0.auth0Organization) {
+  //   authorizationParams.organization = config.auth0.auth0Organization;
+  // }
 
   return (
     <Auth0Provider
-      domain={auth0Config.domain}
-      clientId={auth0Config.clientId}
+      domain={config?.auth0.auth0Domain || ''}
+      clientId={config?.auth0.auth0ClientId || ''}
       authorizationParams={authorizationParams}
       // useRefreshTokens
       // cacheLocation='localstorage'
