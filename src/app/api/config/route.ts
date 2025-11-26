@@ -2,15 +2,15 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   // ส่ง environment variables ที่ต้องการให้ client-side ใช้งาน
-  const AppConfig = {
-    apiEndpoint: process.env.API_ENDPOINT,
+  const config = {
     auth0: {
-      auth0Audience: process.env.AUTH0_AUDIENCE,
-      auth0Domain: process.env.AUTH0_DOMAIN,
-      auth0ClientId: process.env.AUTH0_CLIENT_ID,
-      auth0RedirectUri: process.env.AUTH0_REDIRECT_URI,
+      app_key: process.env.APP_KEY || '',
+      audience: process.env.AUTH0_AUDIENCE || '',
+      domain: process.env.AUTH0_DOMAIN || '',
+      clientId: process.env.AUTH0_CLIENT_ID || '',
+      redirectUri: process.env.AUTH0_REDIRECT_URI || '',
     },
   };
 
-  return NextResponse.json(AppConfig);
+  return NextResponse.json(config);
 }

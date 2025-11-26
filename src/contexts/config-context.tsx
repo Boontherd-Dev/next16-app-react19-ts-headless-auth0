@@ -9,14 +9,14 @@ import {
 } from 'react';
 
 interface Auth0Config {
-  auth0Audience: string;
-  auth0Domain: string;
-  auth0ClientId: string;
-  auth0RedirectUri: string;
+  app_key: string;
+  audience: string;
+  domain: string;
+  clientId: string;
+  redirectUri: string;
 }
 
 interface AppConfig {
-  apiEndpoint: string;
   auth0: Auth0Config;
 }
 
