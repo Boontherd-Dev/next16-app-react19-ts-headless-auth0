@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.8.0",
-    "@auth0/nextjs-auth0": "^4.11.0",
+    "@auth0/nextjs-auth0": "^4.13.1",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
